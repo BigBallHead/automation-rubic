@@ -64,7 +64,6 @@ def connect_to_chrome_with_mm(driver):
 
 
 
-
 """
 Функция клика на элемент после его загрузки
 """
