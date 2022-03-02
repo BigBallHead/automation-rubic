@@ -7,7 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 # driver = webdriver.Chrome(executable_path='/Users/ivankondratev/Desktop/automation.rubic/metamaskextgeneral.crx')
 #
 """
-Распаковка и авторизация в метамаске
+Распаковка и авторизация в метамаске.
 """
 def connect_to_chrome_with_mm(driver):
     wait = WebDriverWait(driver,30)
