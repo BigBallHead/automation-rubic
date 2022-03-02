@@ -23,7 +23,7 @@ def connect_to_chrome_with_mm(driver):
     InputsMetamask = driver.find_elements_by_xpath('//input')
     InputsMetamask[0].send_keys('enjoy treat talk purpose clog affair fancy category book mixture crouch dizzy')
     InputsMetamask[1].send_keys('d1c7b182')
-    InputsMetamask[2].send_keys('d1c7b182')  
+    InputsMetamask[2].send_keys('d1c7b182')
     driver.find_element_by_xpath("//*[@class='first-time-flow__checkbox first-time-flow__terms']").click() #чек-бокс
     driver.find_element_by_xpath('//button[text()="Import"]').click()
     wait.until(EC.element_to_be_clickable((By.XPATH,'//button[text()="All Done"]')))
@@ -61,7 +61,7 @@ def connect_to_chrome_with_mm(driver):
     driver.find_element_by_xpath("//*[text()='Next']").click()
     wait.until(EC.element_to_be_clickable((By.XPATH,"//*[text()='Connect']")))
     driver.find_element_by_xpath("//*[text()='Connect']").click()
-   
+
 
 
 
@@ -77,7 +77,7 @@ def wait_elements_located(xpath, driver):
     return element
 
 """
-Функция ожидания загрузки элемента 
+Функция ожидания загрузки элемента
 """
 def wait_elements_clicable(xpath, driver):
     element = WebDriverWait(driver,20).until(
@@ -87,7 +87,7 @@ def wait_elements_clicable(xpath, driver):
     )
     return element
 
-  
+
 def back_to_burger_and_click(driver):
     driver.execute_script("history.back();")
     wait_elements_clicable(xpath="//*[@class='burger-menu']",driver=driver).click()
