@@ -4,8 +4,8 @@ from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 
-# driver = webdriver.Chrome(executable_path='/Users/ivankondratev/Desktop/automation.rubic/metamaskextgeneral.crx')
-#
+driver = webdriver.Chrome(executable_path='/Users/ivankondratev/Desktop/automation.rubic/metamaskextgeneral.crx')
+
 """
 Распаковка и авторизация в метамаске.
 """
@@ -86,7 +86,9 @@ def wait_elements_clicable(xpath, driver):
     )
     return element
 
-
+"""
+Функция возврата в бургер меню
+"""
 def back_to_burger_and_click(driver):
     driver.execute_script("history.back();")
     wait_elements_clicable(xpath="//*[@class='burger-menu']",driver=driver).click()
