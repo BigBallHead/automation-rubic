@@ -21,9 +21,9 @@ def connect_to_chrome_with_mm(driver):
     driver.find_element_by_xpath("//button[text()='No Thanks']").click()
     sleep(1)
     InputsMetamask = driver.find_elements_by_xpath('//input')
-    InputsMetamask[0].send_keys('enjoy treat talk purpose clog affair fancy category book mixture crouch dizzy')
-    InputsMetamask[1].send_keys('d1c7b182')
-    InputsMetamask[2].send_keys('d1c7b182')
+    InputsMetamask[0].send_keys('') #Mnemonic phrase
+    InputsMetamask[1].send_keys('') #Password
+    InputsMetamask[2].send_keys('') #Password Confirmation
     driver.find_element_by_xpath("//*[@class='first-time-flow__checkbox first-time-flow__terms']").click() #чек-бокс
     driver.find_element_by_xpath('//button[text()="Import"]').click()
     wait.until(EC.element_to_be_clickable((By.XPATH,'//button[text()="All Done"]')))
@@ -50,13 +50,13 @@ def connect_to_chrome_with_mm(driver):
 
     #---------Переход на рубик и подключение метамаска
     driver.execute_script("window.open('https://app.rubic.exchange/?fromChain=POLYGON&toChain=POLYGON&from=MATIC&to=USDC&amount=0.1')")
-    driver.switch_to.window(driver.window_handles[2])
+    driver.switch_to.window(handles[2])
 
     wait.until(EC.element_to_be_clickable((By.XPATH,"//span[text()='Connect Wallet']")))
     driver.find_element_by_xpath("//span[text()='Connect Wallet']").click()
     driver.find_element_by_xpath("//button[contains(text(), 'MetaMask')]").click()
     sleep(2)
-    driver.switch_to.window(driver.window_handles[3])
+    driver.switch_to.window(handles[3])
     wait.until(EC.element_to_be_clickable((By.XPATH,"//*[text()='Next']")))
     driver.find_element_by_xpath("//*[text()='Next']").click()
     wait.until(EC.element_to_be_clickable((By.XPATH,"//*[text()='Connect']")))
@@ -65,7 +65,7 @@ def connect_to_chrome_with_mm(driver):
 
 
 """
-Функция клика на элемент после его загрузки
+Функция ожидания загрузки элемента
 """
 def wait_elements_located(xpath, driver):
     element = WebDriverWait(driver,20).until(
@@ -76,7 +76,7 @@ def wait_elements_located(xpath, driver):
     return element
 
 """
-Функция ожидания загрузки элемента
+Функция клика на элемент после его загрузки
 """
 def wait_elements_clicable(xpath, driver):
     element = WebDriverWait(driver,20).until(
