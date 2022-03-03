@@ -13,7 +13,7 @@ def connect_to_chrome_with_mm(driver):
     handles = driver.window_handles
     driver.switch_to.window(handles[0])
     sleep(1)
-    driver.refresh() #Костыльная строчка, иногда расширение метамаска открывает пустую страницу, после рефреша становится ок, закономерность установить не удалось.
+    driver.refresh()
     wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@class='button btn--rounded btn-primary first-time-flow__button']")))
     driver.find_element_by_xpath("//*[@class='button btn--rounded btn-primary first-time-flow__button']").click()
     driver.find_element_by_xpath("//button[text()='Import wallet']").click()
@@ -49,18 +49,17 @@ def connect_to_chrome_with_mm(driver):
 
     #---------Переход на рубик и подключение метамаска
     driver.execute_script("window.open('https://app.rubic.exchange/?fromChain=POLYGON&toChain=POLYGON&from=MATIC&to=USDC&amount=0.1')")
-    driver.switch_to.window(handles[2])
+    driver.switch_to.window(driver.window_handles[2])
 
     wait.until(EC.element_to_be_clickable((By.XPATH,"//span[text()='Connect Wallet']")))
     driver.find_element_by_xpath("//span[text()='Connect Wallet']").click()
     driver.find_element_by_xpath("//button[contains(text(), 'MetaMask')]").click()
     sleep(2)
-    driver.switch_to.window(handles[3])
+    driver.switch_to.window(driver.window_handles[3])
     wait.until(EC.element_to_be_clickable((By.XPATH,"//*[text()='Next']")))
     driver.find_element_by_xpath("//*[text()='Next']").click()
     wait.until(EC.element_to_be_clickable((By.XPATH,"//*[text()='Connect']")))
     driver.find_element_by_xpath("//*[text()='Connect']").click()
-
 
 
 """
