@@ -5,10 +5,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from env import *
 
-# driver = webdriver.Chrome(executable_path='/Users/ivankondratev/Desktop/automation.rubic/metamaskextgeneral.crx')
-
 """
-Распаковка и авторизация в метамаске.
+Распаковка расширения и авторизация(Сеть полигон).
 """
 def connect_to_chrome_with_mm(driver):
     wait = WebDriverWait(driver,30)
@@ -22,9 +20,9 @@ def connect_to_chrome_with_mm(driver):
     driver.find_element_by_xpath("//button[text()='No Thanks']").click()
     sleep(1)
     InputsMetamask = driver.find_elements_by_xpath('//input')
-    InputsMetamask[0].send_keys(secret_phrase) #Mnemonic phrase
-    InputsMetamask[1].send_keys(password) #Password
-    InputsMetamask[2].send_keys(password) #Password Confirmation
+    InputsMetamask[0].send_keys(secret_phrase)
+    InputsMetamask[1].send_keys(password)
+    InputsMetamask[2].send_keys(password)
     driver.find_element_by_xpath("//*[@class='first-time-flow__checkbox first-time-flow__terms']").click() #чек-бокс
     driver.find_element_by_xpath('//button[text()="Import"]').click()
     wait.until(EC.element_to_be_clickable((By.XPATH,'//button[text()="All Done"]')))
