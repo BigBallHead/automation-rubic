@@ -1,4 +1,3 @@
-from selenium import webdriver
 from time import sleep
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -47,21 +46,6 @@ def connect_to_chrome_with_mm(driver):
     Inputs[4].send_keys('https://polygonscan.com/')
     driver.find_element_by_xpath('//*[text()="Save"]').click()
 
-    #---------Переход на рубик и подключение метамаска
-    driver.execute_script("window.open('https://app.rubic.exchange/?fromChain=POLYGON&toChain=POLYGON&from=MATIC&to=USDC&amount=0.1')")
-    driver.switch_to.window(driver.window_handles[2])
-
-    wait.until(EC.element_to_be_clickable((By.XPATH,"//span[text()='Connect Wallet']")))
-    driver.find_element_by_xpath("//span[text()='Connect Wallet']").click()
-    driver.find_element_by_xpath("//button[contains(text(), 'MetaMask')]").click()
-    sleep(2)
-    driver.switch_to.window(driver.window_handles[3])
-    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[text()='Next']")))
-    driver.find_element_by_xpath("//*[text()='Next']").click()
-    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[text()='Connect']")))
-    driver.find_element_by_xpath("//*[text()='Connect']").click()
-
-
 """
 Функция ожидания загрузки элемента
 """
@@ -90,3 +74,4 @@ def wait_elements_clicable(xpath, driver):
 def back_to_burger_and_click(driver):
     driver.execute_script("history.back();")
     wait_elements_clicable(xpath="//*[@class='burger-menu']",driver=driver).click()
+
