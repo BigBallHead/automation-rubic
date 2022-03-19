@@ -75,3 +75,11 @@ def back_to_burger_and_click(driver):
     driver.execute_script("history.back();")
     wait_elements_clicable(xpath="//*[@class='burger-menu']",driver=driver).click()
 
+
+# wait_elements_clicable(xpath="//a[text()='details']",driver=driver).click()
+# print('Инстант трейд прошел успешно')
+
+
+
+# w3 = Web3(HTTPProvider(""))
+# tx_hash = w3.eth.getTransactionCount('your account address')
