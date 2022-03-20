@@ -6,12 +6,12 @@ from functions import connect_to_chrome_with_mm
 from functions import wait_elements_clicable
 from functions import wait_elements_located
 
-METAMASK_PATH = metamask
+METAMASK_PATH = metamask_path
 op = webdriver.ChromeOptions()
 op.add_extension(METAMASK_PATH)
 op.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
 op.add_experimental_option('excludeSwitches', ['enable-logging'])
-driver = webdriver.Chrome(executable_path=chrome,options=op)
+driver = webdriver.Chrome(executable_path=chrome_path,options=op)
 driver.maximize_window()
 
 try:
