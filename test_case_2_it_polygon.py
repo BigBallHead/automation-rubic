@@ -2,7 +2,7 @@ from selenium import webdriver
 from time import sleep
 from env import *
 
-from functions import connect_to_chrome_with_mm
+from functions import connect_to_chrome_with_mm, connect_to_chrome_with_mm_polygon
 from functions import wait_elements_clicable
 from functions import wait_elements_located
 
@@ -15,7 +15,7 @@ driver = webdriver.Chrome(executable_path=chrome_path,options=op)
 driver.maximize_window()
 
 try:
-    connect_to_chrome_with_mm(driver)
+    connect_to_chrome_with_mm_polygon(driver)
 
     driver.execute_script("window.open('https://app.rubic.exchange/?fromChain=POLYGON&toChain=POLYGON&from=MATIC&to=USDC&amount=0.1')")
     driver.switch_to.window(driver.window_handles[2])

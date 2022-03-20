@@ -7,7 +7,7 @@ from env import *
 """
 Распаковка расширения и авторизация(Сеть полигон).
 """
-def connect_to_chrome_with_mm(driver):
+def connect_to_chrome_with_mm_polygon(driver):
     wait = WebDriverWait(driver,30)
     handles = driver.window_handles
     driver.switch_to.window(handles[0])
