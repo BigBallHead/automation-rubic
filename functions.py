@@ -5,6 +5,48 @@ from selenium.webdriver.support import expected_conditions as EC
 from env import *
 
 """
+Распаковка расширения и авторизация(Сеть бинанс).
+"""
+def connect_to_chrome_with_mm_binance(driver):
+    wait = WebDriverWait(driver,30)
+    handles = driver.window_handles
+    driver.switch_to.window(handles[0])
+    sleep(1)
+    driver.refresh()
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@class='button btn--rounded btn-primary first-time-flow__button']")))
+    driver.find_element_by_xpath("//*[@class='button btn--rounded btn-primary first-time-flow__button']").click()
+    driver.find_element_by_xpath("//button[text()='Import wallet']").click()
+    driver.find_element_by_xpath("//button[text()='No Thanks']").click()
+    sleep(1)
+    InputsMetamask = driver.find_elements_by_xpath('//input')
+    InputsMetamask[0].send_keys(secret_phrase)
+    InputsMetamask[1].send_keys(password)
+    InputsMetamask[2].send_keys(password)
+    driver.find_element_by_xpath("//*[@class='first-time-flow__checkbox first-time-flow__terms']").click() #чек-бокс
+    driver.find_element_by_xpath('//button[text()="Import"]').click()
+    wait.until(EC.element_to_be_clickable((By.XPATH,'//button[text()="All Done"]')))
+    driver.find_element_by_xpath('//button[text()="All Done"]').click()
+
+    #----------Закрытие всплывающего окна
+    wait.until(EC.element_to_be_clickable((By.XPATH,'//*[@data-testid="popover-close"]')))
+    driver.find_element_by_xpath('//*[@data-testid="popover-close"]').click() #Крестик
+
+    #---------Смена аккаунта и создание сети
+    driver.find_element_by_xpath("//*[@class='account-menu__icon']").click()
+    driver.find_element_by_xpath('//*[text()="Account 3"]').click()
+    driver.find_element_by_xpath("//*[@class='account-menu__icon']").click()
+    driver.find_element_by_xpath('//*[text()="Settings"]').click()
+    driver.find_element_by_xpath('//*[text()="Networks"]').click()
+    driver.find_element_by_xpath('//*[text()="Add a network"]').click()
+    Inputs = driver.find_elements_by_xpath("//*[@class='form-field__input']")
+    Inputs[0].send_keys('Smart Chain')
+    Inputs[1].send_keys('https://bsc-dataseed.binance.org/')
+    Inputs[2].send_keys('56')
+    Inputs[3].send_keys('BNB')
+    Inputs[4].send_keys('https://bscscan.com')
+    driver.find_element_by_xpath('//*[text()="Save"]').click()
+
+"""
 Распаковка расширения и авторизация(Сеть полигон).
 """
 def connect_to_chrome_with_mm_polygon(driver):
