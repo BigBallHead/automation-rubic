@@ -3,8 +3,6 @@ from webbrowser import get
 from selenium import webdriver
 from time import sleep
 from env import *
-import http, requests
-import json
 
 
 from functions import connect_to_chrome_with_mm_polygon
