@@ -1,8 +1,13 @@
+from pickle import GET
+from webbrowser import get
 from selenium import webdriver
 from time import sleep
 from env import *
+import http, requests
+import json
 
-from functions import connect_to_chrome_with_mm, connect_to_chrome_with_mm_polygon
+
+from functions import connect_to_chrome_with_mm_polygon
 from functions import wait_elements_clicable
 from functions import wait_elements_located
 
@@ -27,6 +32,7 @@ try:
     wait_elements_clicable(xpath="//*[text()='Next']",driver=driver).click()
     wait_elements_clicable(xpath="//*[text()='Connect']",driver=driver).click()
     driver.switch_to.window(driver.window_handles[2])
+    sleep(1)
 
     swap_button = wait_elements_clicable(xpath="//span[contains(text(),'Swap')]",driver=driver).click()
 
@@ -36,13 +42,18 @@ try:
     wait_elements_clicable(xpath="//button[text()='Confirm']",driver=driver).click()
     sleep(1)
     driver.switch_to.window(driver.window_handles[2])
+    wait_elements_clicable(xpath='//*[text()="details"]',driver=driver).click()
+    driver.switch_to.window(driver.window_handles[3])
 
 finally:
-    driver.find_element_by_xpath('//*[text()="details"]').click()
-    driver.switch_to.window(driver.window_handles[3])
     txhash = wait_elements_located("//*[@id='spanTxHash']",driver=driver)
-    print('Инстант трейд прошел успешно',txhash.text)
-    sleep(3)
-    driver.quit()
+    if txhash:
+        print('Инстант трейд прошел успешно',txhash.text)
+
+
+
+
+
+
 
 
