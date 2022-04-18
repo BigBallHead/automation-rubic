@@ -1,4 +1,3 @@
-from pickle import GET
 from webbrowser import get
 from selenium import webdriver
 from time import sleep
@@ -46,4 +45,4 @@ finally:
     txhash = wait_elements_located("//*[@id='spanTxHash']",driver=driver)
     if txhash:
         print('Кроссчейн прошел успешно',txhash.text)
-        driver.quit
+        driver.quit()

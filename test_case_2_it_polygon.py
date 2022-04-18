@@ -47,7 +47,7 @@ finally:
     txhash = wait_elements_located("//*[@id='spanTxHash']",driver=driver)
     if txhash:
         print('Инстант трейд прошел успешно',txhash.text)
-
+        driver.quit()
 
 
 
