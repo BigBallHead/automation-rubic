@@ -1,4 +1,3 @@
-from webbrowser import get
 from selenium import webdriver
 from time import sleep
 from env import *

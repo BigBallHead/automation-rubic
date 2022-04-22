@@ -1,9 +1,6 @@
-from pickle import GET
-from webbrowser import get
 from selenium import webdriver
 from time import sleep
 from env import *
-
 
 from functions import connect_to_chrome_with_mm_polygon
 from functions import wait_elements_clicable
