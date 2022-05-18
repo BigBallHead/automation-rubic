@@ -1,3 +1,4 @@
+from ast import Not
 from selenium import webdriver
 from time import sleep
 from env import *
@@ -44,4 +45,4 @@ finally:
     txhash = wait_elements_located("//*[@id='spanTxHash']",driver=driver)
     if txhash:
         print('Кроссчейн прошел успешно',txhash.text)
-        driver.quit()
+
