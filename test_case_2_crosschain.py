@@ -1,19 +1,19 @@
-from ast import Not
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from env import *
 
 
-from functions import connect_to_chrome_with_mm_binance, connect_to_chrome_with_mm_polygon
-from functions import wait_elements_clicable
-from functions import wait_elements_located
+from main import connect_to_chrome_with_mm_binance
+from main import wait_elements_clicable
+from main import wait_elements_located
 
 METAMASK_PATH = metamask_path
 op = webdriver.ChromeOptions()
 op.add_extension(METAMASK_PATH)
 op.add_experimental_option('prefs', {'intl.accept_languages': 'en,en_US'})
 op.add_experimental_option('excludeSwitches', ['enable-logging'])
-driver = webdriver.Chrome(executable_path=chrome_path,options=op)
+driver = webdriver.Chrome(ChromeDriverManager().install(),options=op)
 driver.maximize_window()
 
 try:

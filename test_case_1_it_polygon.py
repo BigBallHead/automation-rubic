@@ -2,9 +2,9 @@ from selenium import webdriver
 from time import sleep
 from env import *
 
-from functions import connect_to_chrome_with_mm_polygon
-from functions import wait_elements_clicable
-from functions import wait_elements_located
+from main import connect_to_chrome_with_mm_polygon
+from main import wait_elements_clicable
+from main import wait_elements_located
 
 METAMASK_PATH = metamask_path
 op = webdriver.ChromeOptions()
@@ -17,7 +17,7 @@ driver.maximize_window()
 try:
     connect_to_chrome_with_mm_polygon(driver)
 
-    driver.execute_script("window.open('https://app.rubic.exchange/?fromChain=POLYGON&toChain=POLYGON&from=MATIC&to=USDC&amount=0.1')")
+    driver.execute_script("window.open('https://app.rubic.exchange/?fromChain=POLYGON&toChain=POLYGON&from=MATIC&to=ALGB&amount=0.01')")
     driver.switch_to.window(driver.window_handles[2])
 
     wait_elements_clicable(xpath="//span[text()='Connect Wallet']", driver=driver).click()
@@ -48,6 +48,8 @@ finally:
 
 
 
+#driver.get('https://polygonscan.com/tx/' + txhash)
+#wait_elements_located(driver=driver,xpath="//*[text()='Success']")
 
 
 
