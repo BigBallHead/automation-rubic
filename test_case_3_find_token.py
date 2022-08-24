@@ -12,7 +12,7 @@ def check_token():
     driver.find_element_by_xpath("//input[@tabindex='0']").send_keys("USDC")
     try:
         usdc_coin = driver.find_element_by_xpath("//*[@alt='USD Coin']")
-        print("I can find this coin!!!")
+        print("Token search is alive!!!")
     except NoSuchElementException:
         print("I cannot find this coin ((")
 
